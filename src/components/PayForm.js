@@ -2,13 +2,15 @@ import React, {useContext, useState} from 'react';
 import { PaymentContext } from '../contexts/PayContext';
 
 const PayForm = () => {
-    const {addPayment} = useContext(PaymentContext);
+    const { dispatch}  = useContext(PaymentContext);
     const [title,setTitle] = useState('');
     const [amount,setAmount] = useState('');
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        addPayment(title,amount);
+        dispatch({type: 'ADD_PAYMENT', payment: {
+            title,amount
+        }});
         setTitle('');
         setAmount('');
     }
