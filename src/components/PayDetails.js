@@ -2,9 +2,9 @@ import React, {useContext} from 'react';
 import { PaymentContext } from '../contexts/PayContext';
 
 const PayDetails = ({payment}) => {
-    const {removePayment} = useContext(PaymentContext);
+    const {dispatch} = useContext(PaymentContext);
     return(
-        <li onClick={() => removePayment(payment.id)}>
+        <li onClick={() => dispatch({type: 'REMOVE_PAYMENT',id : payment.id})}>
             <div className='title'>{payment.title}</div>
             <div className='amount'>{payment.amount}</div>
         </li>        
